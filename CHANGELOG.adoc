@@ -1,0 +1,176 @@
+// Metadata
+:doctitle: Changelog - frf-thrills_api
+:orgname: FirstRF
+:version-label: Release
+:revnumber: 1.3.9
+:revdate:
+:!example-caption:
+
+
+// Settings
+// :experimental:
+:toc:
+
+// IMPORTANT!  DO NOT CHANGE UNTIL YOU ARE READY TO BUMP VERSION
+// AND UNRELEASED SECTION HAS BEEN REVIEWED!
+// Once changged, please preview before bump to make sure no formatting mistakes were made
+:approved-for-release: no
+
+// Please be mindful of the end audience. If this file is customer facing, only
+// share information which is relevant to their available API.
+// The only lines that should be edited below are the
+//  1. Description line (first line starting with a dot and no space)
+//  2. Lines that start with '-', or new lines in the appropriate block starting with '-'
+
+ifeval::["{approved-for-release}" == "yes"]
+== UNRELEASED
+
+.Edit this line to be a brief description of the release
+=====
+.Features
+====
+- Add Feature Changes Here
+====
+.Bugfixes
+====
+- Add Bugfix Changes Here
+====
+=====
+endif::[]
+
+// AUTOMATICALLY GENERATED OUTPUT BELOW.  DO NOT EDIT BELOW HERE
+== {version-label} 1.3.9 - ( Apr 26, 2024, 13:25 PM )
+
+.Added more CLI options for selecting reload dirs to work with pipx install
+=====
+.Features
+====
+- More CLI flexibility
+====
+.Bugfixes
+====
+- Fixed default cli path
+- Use str not Path
+- Fix default dir typo
+- Fix --reload flag to --no-reload
+- Fixed a circular import issue
+====
+=====
+
+
+
+
+== {version-label} 1.3.3 - ( Apr 25, 2024, 11:40 AM )
+
+.Fixes for broken pip installable version
+=====
+.Features
+====
+- None
+====
+.Bugfixes
+====
+- Fixed app creation
+- Fixed passing app instead of import string
+====
+=====
+
+
+
+
+== {version-label} 1.3.1 - ( Apr 24, 2024, 17:28 PM )
+
+.Fixed broken version command
+=====
+.Features
+====
+- None
+====
+.Bugfixes
+====
+- Fixed broken version command
+====
+=====
+
+
+
+
+== {version-label} 1.2.0 - ( Apr 24, 2024, 16:31 PM )
+
+.Release now pip installable with simple cli interface
+=====
+.Features
+====
+- Added cli interface
+====
+.Bugfixes
+====
+- Improved some organization to help with pip install
+====
+=====
+
+
+
+== {version-label} 1.1.2 - ( Apr 01, 2024, 14:33 PM )
+
+.Edit this line to be a brief description of the release
+=====
+.Features
+====
+- Add Feature Changes Here
+====
+.Bugfixes
+====
+- Add Bugfix Changes Here
+====
+=====
+
+
+
+== {version-label} 1.1.1 - ( Apr 01, 2024, 13:48 PM )
+
+.Edit this line to be a brief description of the release
+=====
+.Features
+====
+- Add Feature Changes Here
+====
+.Bugfixes
+====
+- Add Bugfix Changes Here
+====
+=====
+
+
+
+== {version-label} 1.1.0 - ( Apr 01, 2024, 13:45 PM )
+
+.Edit this line to be a brief description of the release
+=====
+.Features
+====
+- Add Feature Changes Here
+====
+.Bugfixes
+====
+- Add Bugfix Changes Here
+====
+=====
+
+
+
+== {version-label} 1.0.0 - ( Mar 20, 2024, 16:11 PM )
+
+.Edit this line to be a brief description of the release
+=====
+.Features
+====
+- Add Feature Changes Here
+====
+.Bugfixes
+====
+- Add Bugfix Changes Here
+====
+=====
+
+

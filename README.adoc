@@ -1,0 +1,109 @@
+// Metadata
+:title: thrills_api Readme
+:source-highlighter: rouge
+:rouge-style: igor_pro
+// Enables
+:experimental:
+:toc:
+:icons: font
+// Optional
+//:sectnums:
+
+= thrills_api
+
+Back-end data processing API
+
+
+Describe why this package was developed and what problem it was intended to solve.
+
+== Installation
+
+*Describe to end users how to install this tool if it requires anything special e.g. not just `pip install x`*
+
+NOTE: Your Python install must be setup according to the instructions on link:http://confluence.firstrf.com/display/GI/Python[confluence] in order to be able to install from FIRST RF's internal pypi server.
+
+== Usage
+
+To launch the server, run the following command from the `thrills_api/thrills_api/` directory:
+
+`uvicorn thrills_api:app --host "10.99.99.3" --port "3001" --reload`
+
+== NPU config
+
+The back-end allows for the user to send a POST request form the front-end to
+configure the channel settings on every NPU.  Once the back-end receives
+valid channel settings, it then sends a JSON message to the IP:port
+(224.1.1.2:5008), which all of the NPUs are listening on.
+
+[source,python]
+----
+# List of CMD options:
+CMD_STRINGS = [
+    'PING',     # Ping the NPU, responds with a ack
+    'SETCFG',   # Set the channel configuration of the NPU
+    'REBOOT',   # Reboot the NPU
+    'TIME',     # Query the current time on the NPU
+    'VERSION',  # Get the current version of the NPU software
+]
+
+# NPUS field expects a string, or a list of NPU strings:
+NPUS = 'ALL'
+NPUS = ['SN03A']
+NPUS = ['SN03A', 'SN03B', 'SN08A', 'SN08B']
+
+# Subchannel definitions for payload
+class SubChannel(str, Enum):
+    sub_unk = ""
+    quarter = "q"
+    half = "h"
+    full = "f"
+
+    def __repr__(self):
+        return str(self.name)
+
+# Channel definitions for payload
+class Channel(IntEnum):
+    ch_unk = -1
+    ch1 = 1
+    ch2 = 2
+    ch3 = 3
+    ch4 = 4
+    ch5 = 5
+    ch6 = 6
+
+# Power definitions for payload
+class Power(IntEnum):
+    pwr_unk = -1
+    auto_0 = 0
+    auto_1 = 1
+    auto_2 = 2
+    auto_3 = 3
+
+# The payload can be None, or a JSON with the following fields
+payload = {
+    'subch': one of @SubChannel,
+    'ch0': one of @Channel,
+    'ch1'one of @Channel,
+    'antcfg' None, # Not implemented
+    'powersetting': one of @power
+}
+
+# JSON formatted message
+msg = { 'CMD': 'SETCFG', 'NPUS': 'ALL', 'DATA': payload }
+----
+
+For more information about the configuration settings, see the following:
+
+https://gitlab.firstrf.com/programs/frf-54800_millimeter/thrills_data_collector/-/blob/main/thrills_data_collector/thrills_data_collector.py#L404
+
+https://gitlab.firstrf.com/programs/frf-54800_millimeter/thrills_data_collector/-/blob/main/thrills_data_collector/thrills_msg_payload_types.py#L206
+
+== Derived data
+
+A JSON with the latest derived data for a specific serial number can be requested by
+navigating to the `/derived_data` route and then providing the desired SN as a
+path parameter.
+
+Example query for SN03A:
+
+`http://10.99.99.3/derived_data/SN03A`
